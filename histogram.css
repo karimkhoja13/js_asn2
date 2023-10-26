@@ -44,23 +44,23 @@
 
 /* The colors of the histogram bars for each letter grade */
 .Aplus-bar {
-  background-color: #8c1d40;
+  background-color: #164f24;
 }
 
 .A-bar {
-  background-color: #a6192e;
+  background-color: #0c7606;
 }
 
 .Aminus-bar {
-  background-color: #d71920;
+  background-color: #0c7606;
 }
 
 .Bplus-bar {
-  background-color: #f16c49;
+  background-color: #0c7606;
 }
 
 .B-bar {
-  background-color: #f69256;
+  background-color: #08aa2b;
 }
 
 .Bminus-bar {
@@ -68,23 +68,23 @@
 }
 
 .Cplus-bar {
-  background-color: #08aa2b;
+  background-color: #f69256;
 }
 
 .C-bar {
-  background-color: #0c7606;
+  background-color: #f16c49;
 }
 
 .Cminus-bar {
-  background-color: #012c0b;
+  background-color: #d71920;
 }
 
 .D-bar {
-  background-color: #0c7606;
+  background-color: #a6192e;
 }
 
 .F-bar {
-  background-color: #0c7606;
+  background-color: #8c1d40;
 }
 
 /* The error class for the error messages */

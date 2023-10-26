@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Histogram</title>
     <link rel="stylesheet" href="histogram.css" />
-    
+    <script src="calculate.js" defer></script>
   </head>
   <body>
     <section class="container">
@@ -16,8 +16,9 @@
           type="file"
           id="file-input"
           accept=".csv"
-          onchange="readFile(this)"
+          
         />
+        <!-- onchange="readFile(this)" -->
         <p>Adjust the lower bounds of letter grades:</p>
         <table id="grade-table">
           <tr>
@@ -27,7 +28,7 @@
                 type="number"
                 id="maximum-grade"
                 value="100.00"
-                onchange="updateHistogram(this)"
+                onchange="updateHistogram()"
               />
             </td>
           </tr>
@@ -38,7 +39,7 @@
                 type="number"
                 id="a-plus"
                 value="95.00"
-                onchange="updateHistogram(this)"
+                onchange="updateHistogram()"
               />
             </td>
           </tr>
@@ -49,7 +50,7 @@
                 type="number"
                 id="a"
                 value="90.00"
-                onchange="updateHistogram(this)"
+                onchange="updateHistogram()"
               />
             </td>
           </tr>
@@ -171,7 +172,7 @@
         <!-- For example: -->
         <!-- p class = "error">Invalid input file. Please select a valid CSV file.</p -->
         <!-- p class = "error">Invalid grade bounds. Please enter numbers between 0 and 100.</p -->
-          <table border = "1" id="histogram">
+          <table id="histogram">
 
           </table>
 
@@ -184,5 +185,5 @@
         </div>
       </section>
     </section>
-  </body><script src="calculate.js"></script>
+  </body>
 </html>

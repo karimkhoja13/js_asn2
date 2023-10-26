@@ -1,14 +1,11 @@
 // This file contains the logic to read the input file, calculate the histogram and statistics, and update the output section
 
-var file;
-
-// This function reads the input file and parses it into an array of objects with name and grade properties
-function readFile(fileInput) {
-  // Get the file object from the file input element
-  var file = fileInput.files[0];
+var input = document.getElementById("file-input");
+var data = [];
+input.addEventListener ("change", function () { 
+  var file = input.files[0];
   // Check if the file is a CSV file
   if (file.type !== "text/csv") {
-    // Display an error message and clear the output section
     displayError("Invalid input file. Please select a valid CSV file.");
     // clearOutput();
     return;
@@ -22,7 +19,7 @@ function readFile(fileInput) {
     // Split the content by line breaks
     var lines = content.split("\n");
     // Create an empty array to store the parsed data
-    var data = [];
+    
     var outOfBounds = [];
     // Loop through each line
     for (var i = 1; i < lines.length; i++) {
@@ -59,7 +56,7 @@ function readFile(fileInput) {
 
     // If the data array is not empty, update the histogram and statistics with the data
     if (data.length > 0) {
-      updateHistogram(data);
+      updateHistogram();
       updateStats(data);
     } else {
       // Display an error message and clear the output section
@@ -70,11 +67,16 @@ function readFile(fileInput) {
   };
   // Read the file as a text
   reader.readAsText(file);
+});
+
+// This function reads the input file and parses it into an array of objects with name and grade properties
+function readFile(fileInput) {
+  // Get the file object from the file input element
+  
 }
 
 // This function updates the histogram with the given data array
-function updateHistogram(data) {
-  readFile(this);
+function updateHistogram() {
   // Get the lower bounds of letter grades from the input elements
   var maxGrade = parseFloat(document.getElementById("maximum-grade").value);
   var aPlus = parseFloat(document.getElementById("a-plus").value);
@@ -174,7 +176,7 @@ function updateHistogram(data) {
       var bar = document.createElement("div");
       bar.className = "bar " + letter + "-bar";
       // Calculate the width of the bar as a percentage of the total number of students
-      var width = Math.round(count / data.length * 100) * 2.5;
+      var width = Math.round(count / data.length * 100) * 3;
       // Set the style attribute of the bar element with the width value
       bar.style.width = width + "%";
       // Set the data attribute of the bar element with the count value
@@ -182,7 +184,7 @@ function updateHistogram(data) {
       // Set the text content of the bar element with the letter grade and the count value
       label.textContent = letter + " (" + count + ")";
       // Append the bar element to the histogram div
-      histogram.appendChild(label);
+      cell1.appendChild(label);
       cell2.appendChild(bar);
     }
   }
