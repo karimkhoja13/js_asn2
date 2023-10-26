@@ -1,0 +1,93 @@
+/* This file contains the style rules for the histogram generator */
+
+/* The container div for the whole page */
+.container {
+  width: 80%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* The input section div */
+.input-section {
+  width: 40%;
+  float: left;
+}
+
+/* The output section div */
+.output-section {
+  width: 60%;
+  float: right;
+}
+
+/* The grade table */
+#grade-table {
+  border-collapse: collapse;
+}
+
+/* The grade table cells */
+#grade-table td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+/* The histogram div */
+/* #histogram {
+  height: 1000px;
+} */
+
+/* The bar class for the histogram bars */
+.bar {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+
+/* The colors of the histogram bars for each letter grade */
+.Aplus-bar {
+  background-color: #8c1d40;
+}
+
+.A-bar {
+  background-color: #a6192e;
+}
+
+.Aminus-bar {
+  background-color: #d71920;
+}
+
+.Bplus-bar {
+  background-color: #f16c49;
+}
+
+.B-bar {
+  background-color: #f69256;
+}
+
+.Bminus-bar {
+  background-color: #fbb04e;
+}
+
+.Cplus-bar {
+  background-color: #08aa2b;
+}
+
+.C-bar {
+  background-color: #0c7606;
+}
+
+.Cminus-bar {
+  background-color: #012c0b;
+}
+
+.D-bar {
+  background-color: #0c7606;
+}
+
+.F-bar {
+  background-color: #0c7606;
+}
+
+/* The error class for the error messages */
+.error {
+  color: red;
+}
