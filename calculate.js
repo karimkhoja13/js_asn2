@@ -158,7 +158,7 @@ function updateHistogram() {
   }
 
   // Get the histogram div element
-  var histogram = document.querySelector("#histogram");
+  var histogram = document.getElementById("histogram");
   // Clear the histogram div content
   histogram.innerHTML = "";
   // Loop through each letter grade in the counts object
@@ -169,6 +169,7 @@ function updateHistogram() {
     if (count > 0) {
       // Create a div element with the class "bar" and a specific class for the letter grade
       var row = histogram.insertRow(-1);
+      row.className = "each-row"
       var cell1 = row.insertCell(-1); // -1 means the last position
       var cell2 = row.insertCell(-1); // -1 means the last position
       cell2.style.width = "200px";
@@ -193,7 +194,7 @@ function updateHistogram() {
 // This function updates the statistics with the given data array
 function updateStats(data) {
   // Get the stats div element
-  var stats = document.getElementById("stats");
+  var stats = document.getElementsByClassName("stats");
   // Clear the stats div content
   stats.innerHTML = "";
   // Create an array to store the grades of all students
@@ -247,6 +248,6 @@ function clearOutput() {
   // Clear the histogram div content
   histogram.innerHTML = "";
   // Get the stats div element
-  var stats = document.getElementById("stats");
+  var stats = document.getElementsByClassName("stats");
   stats.innerHTML = "";
 }

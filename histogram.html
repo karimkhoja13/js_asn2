@@ -10,180 +10,166 @@
   <body>
     <section class="container">
       <h1>Histogram Generator</h1>
-      <section class="input-section">
-        <p>Select a CSV file with student names and grades:</p>
-        <input
-          type="file"
-          id="file-input"
-          accept=".csv"
+      <input type="file" id="file-input" accept=".csv" />
+      <br />
+      <br />
+      <main>
+        <section class="input-section">
           
-        />
-        <!-- onchange="readFile(this)" -->
-        <p>Adjust the lower bounds of letter grades:</p>
-        <table id="grade-table">
-          <tr>
-            <td>Max</td>
-            <td>
-              <input
-                type="number"
-                id="maximum-grade"
-                value="100.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>A+</td>
-            <td>
-              <input
-                type="number"
-                id="a-plus"
-                value="95.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>A</td>
-            <td>
-              <input
-                type="number"
-                id="a"
-                value="90.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>A-</td>
-            <td>
-              <input
-                type="number"
-                id="a-minus"
-                value="85.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>B+</td>
-            <td>
-              <input
-                type="number"
-                id="b-plus"
-                value="80.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>B</td>
-            <td>
-              <input
-                type="number"
-                id="b"
-                value="75.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>B-</td>
-            <td>
-              <input
-                type="number"
-                id="b-minus"
-                value="70.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>C+</td>
-            <td>
-              <input
-                type="number"
-                id="c-plus"
-                value="65.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>C</td>
-            <td>
-              <input
-                type="number"
-                id="c"
-                value="60.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>C-</td>
-            <td>
-              <input
-                type="number"
-                step="0.01"
-                id="c-minus"
-                value="55.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>D</td>
-            <td>
-              <input
-                type="number"
-                id="d"
-                value="50.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>F</td>
-            <td>
-              <input
-                type="number"
-                id="f"
-                value="0.00"
-                onchange="updateHistogram()"
-              />
-            </td>
-          </tr>
-        </table>
-      </section>
-      <section class="output-section">
-        <h2>Histogram</h2>
-        <!-- This div will contain the histogram bars -->
-        <!-- Each bar will have a class of "bar", a style attribute for the width, and a data attribute for the count -->
-        <!-- For example: -->
-        <!-- div class = "bar A-plus-bar", style = "width: 10%", data-count = "1">A+ (1)</div -->
-        <!-- The bars will be generated dynamically by the calculate.js script -->
-        <!-- The colors of the bars will be defined in the histogram.css file -->
-        <!-- The width of each bar will be proportional to the percentage of students in that grade range -->
-        <!-- The text inside each bar will show the letter grade and the count of students in that range -->
-        <!-- If there is no student in a range, the bar will not be displayed -->
-        <!-- If there is an error in the input file or the grade bounds, the histogram will not be displayed -->
-        <!-- Instead, an error message will be shown in this div -->
-        <!-- For example: -->
-        <!-- p class = "error">Invalid input file. Please select a valid CSV file.</p -->
-        <!-- p class = "error">Invalid grade bounds. Please enter numbers between 0 and 100.</p -->
-          <table id="histogram">
-
+          <!-- onchange="readFile(this)" -->
+          <h2 id="lower">Lower bounds</h2>
+          <table id="grade-table">
+            <tr>
+              <td>Max</td>
+              <td>
+                <input
+                  type="number"
+                  id="maximum-grade"
+                  value="100.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>A+</td>
+              <td>
+                <input
+                  type="number"
+                  id="a-plus"
+                  value="95.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td>
+                <input
+                  type="number"
+                  id="a"
+                  value="90.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>A-</td>
+              <td>
+                <input
+                  type="number"
+                  id="a-minus"
+                  value="85.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>B+</td>
+              <td>
+                <input
+                  type="number"
+                  id="b-plus"
+                  value="80.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>
+                <input
+                  type="number"
+                  id="b"
+                  value="75.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>B-</td>
+              <td>
+                <input
+                  type="number"
+                  id="b-minus"
+                  value="70.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>C+</td>
+              <td>
+                <input
+                  type="number"
+                  id="c-plus"
+                  value="65.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td>
+                <input
+                  type="number"
+                  id="c"
+                  value="60.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>C-</td>
+              <td>
+                <input
+                  type="number"
+                  id="c-minus"
+                  value="55.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td>
+                <input
+                  type="number"
+                  id="d"
+                  value="50.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>
+                <input
+                  type="number"
+                  id="f"
+                  value="0.00"
+                  onchange="updateHistogram()"
+                />
+              </td>
+            </tr>
           </table>
+        </section>
+        <section class="output-section">
+          <section class="histogram">
+            <h2>Histogram</h2>
+            <table id="histogram" cellspacing="0" cellpadding="0">
+            </table>
 
-        <h2>Stats</h2>
-        <div id="stats">
-          <p>Highest: 98</p>
-          <p>Lowest: 98</p>
-          <p>Mean: 98</p>
-          <p>Median: 98</p>
-        </div>
-      </section>
+          </section>
+
+          <section class="stats">
+            <h2>Stats</h2>
+            <p>Highest: -</p>
+            <p>Lowest: -</p>
+            <p>Mean: -</p>
+            <p>Median: -</p>
+          </section>
+        </section>
+      </main>
     </section>
   </body>
 </html>

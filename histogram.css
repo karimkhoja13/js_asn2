@@ -1,46 +1,83 @@
-/* This file contains the style rules for the histogram generator */
+body {
+  background-color:#A6192E ;
+}
 
-/* The container div for the whole page */
 .container {
-  width: 80%;
-  margin: auto;
-  font-family: Arial, sans-serif;
+  background-color: white;
+  margin: 40px;
+  margin-top: -20px;
+  box-shadow: 0px 0px 20px black;
+  padding: 30px;
+  
 }
 
-/* The input section div */
-.input-section {
-  width: 40%;
-  float: left;
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 4 equal columns */
+  grid-template-rows: 1fr;
+  gap: 20px;
+  row-gap: 20px;
+  margin-bottom: 70px;
 }
 
-/* The output section div */
-.output-section {
-  width: 60%;
-  float: right;
+#lower {
+  padding: 20px;
 }
 
-/* The grade table */
 #grade-table {
-  border-collapse: collapse;
+  padding-left: 20px;
 }
 
-/* The grade table cells */
-#grade-table td {
-  border: 1px solid black;
-  padding: 5px;
+#grade-table tr{
+  padding: 20px;
 }
 
-/* The histogram div */
-/* #histogram {
-  height: 1000px;
-} */
+td p {
+  margin: 5px;
+}
 
-/* The bar class for the histogram bars */
+.input-section {
+  background-color: #e9eff1;
+  /* padding: 20px; */
+  width: 85%;
+  height: 100%;
+}
+
+.histogram {
+  background-color: #e9eff1;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.stats {
+  background-color: #e9eff1;
+  padding: 20px;
+}
+
+#histogram {
+  height: 600px;
+}
+
 .bar {
   height: 30px;
-  line-height: 30px;
-  margin-bottom: 5px;
+  /* line-height: 30px; */
+  /* margin-bottom: 5px; */
 }
+
+table {
+  border-spacing:0; /* Removes the cell spacing via CSS */
+  border: 0px;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.output-section {
+  height: 100%;
+}
+
+
 
 /* The colors of the histogram bars for each letter grade */
 .Aplus-bar {
