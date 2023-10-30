@@ -32,10 +32,6 @@ input.addEventListener ("change", function () {
         var name = fields[0].trim();
         var grade = parseFloat(fields[1].trim());
 
-        // var slicedGrade = (fields[1].trim()).slice(0, -1);
-        // var grade = parseFloat(slicedGrade);
-        // console.log(name + " " + grade.toString);
-
         console.log(name + " " + grade.toString());
 
         // Check if the grade is a valid number between 0 and 100
@@ -52,12 +48,12 @@ input.addEventListener ("change", function () {
         clearOutput();
       }
     }
-    console.log("Length of data[] is " + data.length); // FOR TESTING
+    // console.log("Length of data[] is " + data.length); // FOR TESTING
 
     // If the data array is not empty, update the histogram and statistics with the data
     if (data.length > 0) {
       updateHistogram();
-      updateStats(data);
+      updateStats();
     } else {
       // Display an error message and clear the output section
       displayError("No data found. Please select a non-empty file.");
@@ -91,18 +87,18 @@ function updateHistogram() {
   var d = parseFloat(document.getElementById("d").value);
   var f = parseFloat(document.getElementById("f").value);
 
-  // Check if all the lower bounds are valid numbers between 0 and 100
+  // Check if all the lower bounds are valid numbers
   if (isNaN(maxGrade) || isNaN(aPlus) || isNaN(a) || isNaN(aMinus) || isNaN(bPlus) || isNaN(b) || isNaN(bMinus) || isNaN(cPlus) || isNaN(c) || isNaN(cMinus) ||isNaN(d) || isNaN(f)) {
     // Display an error message and clear the output section
-    displayError("Invalid grade bounds. Please enter numbers between 0 and 100.");
+    displayError("Invalid grade bounds. Please enter valid numbers");
     // clearOutput();
     return;
   }
 
   // Check if all the lower bounds are in descending order
-  if (maxGrade < aPlus || aPlus < a || a < aMinus || aMinus < bPlus || bPlus < b || b < bMinus || bMinus < cPlus || cPlus < c || c < cMinus) {
+  if (maxGrade <= aPlus || aPlus <= a || a <= aMinus || aMinus <= bPlus || bPlus <= b || b <= bMinus || bMinus <= cPlus || cPlus <= c || c <= cMinus || cMinus <= d || d <= f) {
     // Display an error message and clear the output section
-    displayError("Invalid grade bounds. Please enter numbers in descending order.");
+    displayError("Invalid grade bounds. Please enter numbers in correct lower bounds. Two lower bounds can't be equal.");
     // clearOutput();
     return;
   } else {
@@ -164,6 +160,11 @@ function updateHistogram() {
   // Loop through each letter grade in the counts object
   for (var letter in counts) {
     // Get the count of students in that letter grade range
+    if (letter === 'Max')
+    {
+      console.log(letter);
+      continue;
+    }
     var count = counts[letter];
     // If the count is not zero, create a bar element and append it to the histogram div
     if (count > 0) {
@@ -189,22 +190,19 @@ function updateHistogram() {
       cell2.appendChild(bar);
     }
   }
+  updateStats();
 }
 
 // This function updates the statistics with the given data array
-function updateStats(data) {
+function updateStats() {
   // Get the stats div element
   var stats = document.getElementsByClassName("stats");
+  var maxGrade = parseFloat(document.getElementById("maximum-grade").value);
   // Clear the stats div content
   stats.innerHTML = "";
   // Create an array to store the grades of all students
-  var grades = [];
-  // Loop through each student in the data array
-  for (var i = 0; i < data.length; i++) {
-    // Get the grade of the student and push it to the grades array
-    var grade = data[i].grade;
-    grades.push(grade);
-  }
+  var grades = data.map(function(item) {return item.grade}).filter(function(item) { return item <= maxGrade})
+  
   // Sort the grades array in ascending order
   grades.sort(function(a, b) {return a - b;});
   // Calculate the highest grade as the last element of the grades array
@@ -213,14 +211,18 @@ function updateStats(data) {
   var lowest = grades[0];
   // Calculate the mean grade as the sum of all grades divided by the number of students
   var sum = grades.reduce(function(a, b) {return a + b;}, 0);
-  var mean = sum / data.length;
+  var mean = (sum / data.length).toFixed(2);
   // Calculate the median grade as the middle element of the grades array if it has an odd length, or the average of the middle two elements if it has an even length
   var median;
   if (grades.length % 2 === 1) {
-    median = grades[Math.floor(grades.length / 2)];
+    median = grades[Math.floor(grades.length / 2)].toFixed(2);
   } else {
-    median = (grades[grades.length / 2 - 1] + grades[grades.length / 2]) / 2;
+    median = ((grades[grades.length / 2 - 1] + grades[grades.length / 2]) / 2).toFixed(2);
   }
+  document.getElementById("highest").innerHTML = highest;
+  document.getElementById("lowest").innerHTML = lowest;
+  document.getElementById("mean").innerHTML = mean;
+  document.getElementById("median").innerHTML = median;
 }
 
 
@@ -238,8 +240,10 @@ function displayError(message) {
   error.textContent = message;
   // Append the paragraph element to the histogram div
   histogram.appendChild(error);
-  var stats = document.getElementById("stats");
-  stats.innerHTML = "";
+  document.getElementById("highest").innerHTML = "-";
+  document.getElementById("lowest").innerHTML =  "-";
+  document.getElementById("mean").innerHTML =  "-";
+  document.getElementById("median").innerHTML =  "-";
 }
 
 function clearOutput() {

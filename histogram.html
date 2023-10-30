@@ -15,8 +15,7 @@
       <br />
       <main>
         <section class="input-section">
-          
-          <!-- onchange="readFile(this)" -->
+          <section class="lower-bounds">
           <h2 id="lower">Lower bounds</h2>
           <table id="grade-table">
             <tr>
@@ -153,6 +152,16 @@
             </tr>
           </table>
         </section>
+        <section class="stats">
+            <h2>Stats</h2>
+            <p>Highest: <span id="highest" onchange="updateStats()">-</span> %</p>
+            <p>Lowest: <span id="lowest" onchange="updateStats()">-</span> %</p>
+            <p>Mean: <span id="mean" onchange="updateStats()">-</span> %</p>
+            <p>Median: <span id="median" onchange="updateStats()">-</span> %</p>
+          </section>
+          
+        </section>
+
         <section class="output-section">
           <section class="histogram">
             <h2>Histogram</h2>
@@ -161,13 +170,7 @@
 
           </section>
 
-          <section class="stats">
-            <h2>Stats</h2>
-            <p>Highest: -</p>
-            <p>Lowest: -</p>
-            <p>Mean: -</p>
-            <p>Median: -</p>
-          </section>
+          
         </section>
       </main>
     </section>

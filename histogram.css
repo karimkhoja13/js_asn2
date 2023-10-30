@@ -45,7 +45,6 @@ td p {
 
 .histogram {
   background-color: #e9eff1;
-  margin-bottom: 50px;
   padding: 20px;
 }
 
@@ -64,7 +63,7 @@ td p {
   /* margin-bottom: 5px; */
 }
 
-table {
+#histogram table {
   border-spacing:0; /* Removes the cell spacing via CSS */
   border: 0px;
 }
